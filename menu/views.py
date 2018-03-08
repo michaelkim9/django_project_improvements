@@ -5,10 +5,6 @@ from .forms import *
 
 
 def menu_list(request):
-    """Added prefetch related of menu items (manytomany fk field)
-    removed if statement and added filters, removed python sorting and
-    replaced with django .order"""
-
     all_menus = Menu.objects.all().prefetch_related('items')
     menus = all_menus.filter(expiration_date__gte=timezone.now()
                              ).order_by('expiration_date')

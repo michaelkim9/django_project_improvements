@@ -19,7 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    # Added missing menu namespace
     url(r'', include('menu.urls',)),
 ]
 
