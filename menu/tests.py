@@ -10,7 +10,6 @@ from .models import Menu, Item, Ingredient
 from .forms import MenuForm
 
 
-# kwargs for setting up menu data
 
 menu1 = {
     'season': 'Summer',

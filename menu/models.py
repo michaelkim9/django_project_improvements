@@ -20,12 +20,17 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
+def thirty_day():
+    return timezone.now() + timezone.timedelta(days=30)
 
 class Menu(models.Model):
     season = models.CharField(max_length=20)
     items = models.ManyToManyField('Item', related_name='items')
     created_date = models.DateTimeField(default=timezone.now)
-    expiration_date = models.DateTimeField(blank=True, null=True)
+    expiration_date = models.DateTimeField(null=False, default=thirty_day)
+
+    class Meta:
+        ordering = ['-created_date']
 
     def __str__(self):
         return self.season
